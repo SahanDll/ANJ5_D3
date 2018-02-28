@@ -1,0 +1,25 @@
+<div>
+  <div>
+    <div class="menu" onclick="javascript: this.classList.toggle('active');">
+      <i class="line">
+        <ul class="nav">
+          <li (click)="homeClick()">Home</li>
+          <li (click)="viewAllClick()">View All</li>
+        </ul>
+      </i><i class="line"></i><i class="line"></i>
+    </div>
+  </div>
+  <div
+    style="border: groove; border-radius: 7px; left: 15%; right: 10%; top: 5%; width: 80%; height: 40%; color: floralwhite; position: absolute; overflow: hidden">
+    <div style="color: gold; font-size: medium; margin-top: 1%; text-align: center">
+      <h3>Publish Trading Ideas</h3>
+    </div>
+    <div style="color: ghostwhite; font-size: medium; float: left; margin-left: 2%; margin-top: 2%">
+      <form (keydown)="keyDownFunction($event)">
+        <span> Stock : &nbsp;&nbsp;</span>
+        <input type="text" [(ngModel)]="insertStock" [ngModelOptions]="{standalone: true}"
+               placeholder="Enter Code or Name" style="height: 2em; width: 15em; border-radius: 5px;"/>
+      </form>
+    </div>
+  </div>
+</div>

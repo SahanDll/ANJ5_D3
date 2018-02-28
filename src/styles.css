@@ -1,1 +1,16 @@
-/* You can add global styles to this file, and also import other style files */
+@import "https://fonts.googleapis.com/css?family=Ubuntu:400,700italic";
+@import "https://fonts.googleapis.com/css?family=Cabin:400";
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background-image: linear-gradient(to top, #30cfd0 0%, #330867 100%);
+  background-size: cover;
+  font-size: 10px;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+}

@@ -1,0 +1,46 @@
+<div>
+  <div>
+    <div class="menu" onclick="javascript: this.classList.toggle('active');">
+      <i class="line">
+        <ul class="nav">
+          <li (click)="homeClick()">Home</li>
+          <li (click)="viewAllClick()">View All</li>
+        </ul>
+      </i><i class="line"></i><i class="line"></i>
+    </div>
+  </div>
+  <div>
+    <div
+      style="border: groove; border-radius: 7px; left: 15%; right: 10%; top: 5%; width: 80%; height: 20%; color: floralwhite; position: absolute; overflow: hidden">
+      <div style="color: gold; font-size: medium; margin-top: 1%; text-align: center">
+        <h3>BigQuery View All</h3>
+      </div>
+      <!--    <div style="color: ghostwhite; font-size: medium; float: left; margin-left: 2%; margin-top: 2%">
+            <form (keydown)="keyDownFunction($event)">
+              <span> User : &nbsp;&nbsp;</span>
+              <input type="text" [(ngModel)]="userId" [ngModelOptions]="{standalone: true}"
+                     placeholder="Enter userId" style="height: 2em; width: 15em; border-radius: 5px;"/>
+            </form>
+          </div>-->
+      <div style="margin-top: 5%">
+        <input type="button" (click)="screen()" value="Screen">&nbsp;&nbsp;
+        <input type="button" (click)="device()" value="Device">&nbsp;&nbsp;
+        <input type="button" (click)="location()" value="Location">&nbsp;&nbsp;
+        <input type="button" (click)="version()" value="Version">&nbsp;&nbsp;
+        <input type="button" (click)="users()" value="Users">
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="unstyled list-hover-slide"
+         style="border: groove; border-radius: 7px; left: 15%; right: 10%; top: 30%; width: 80%; height: 60%; color: floralwhite; position: absolute; overflow: auto">
+      <div style="margin-top: 1%">
+       <!-- <pre> <div [innerHTML]="screenData | json"></div> </pre>-->
+        <div class='card' style="color: black">
+          <app-force-directed-chart-user [data]="chartData"></app-force-directed-chart-user>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

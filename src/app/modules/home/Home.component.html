@@ -1,0 +1,73 @@
+<div>
+  <div>
+    <div id="loader-wrapper" *ngIf="showLoad">
+      <div id="loader"></div>
+      <div class="loader-section section-left"></div>
+      <div class="loader-section section-right"></div>
+    </div>
+  </div>
+  <div style="position: absolute; color: whitesmoke; right: 0; margin-top: 5px; margin-right: 1%">
+    <h3><b>Last login : </b> <i> {{lastLogin}} </i></h3>
+  </div>
+  <div>
+    <div class="notifications">
+      <div class="notify or" *ngIf="pending">
+        <div class="pop">
+          <span> <b (click)="pendingClick()">X</b> </span>
+        </div>
+        <div class="circle">
+          <i class="icon-ok"></i>
+        </div>
+        <div class="info" (click)="viewAllClick()">
+          <span>Pending Notifications</span>
+          <span> <b> 5 notifications </b> &nbsp;&nbsp; <a>Pending for approve</a></span>
+        </div>
+      </div>
+      <div class="notify gr" *ngIf="approved">
+        <div class="pop">
+          <span> <b (click)="approvedClick()">X</b> </span>
+        </div>
+        <div class="circle">
+          <i class="icon-ok"></i>
+        </div>
+        <div class="info" (click)="viewAllClick()">
+          <span>Approved Notifications</span>
+          <span> <b> 2 notifications </b> &nbsp;&nbsp; <a>Approved today</a></span>
+        </div>
+      </div>
+      <div class="notify rd" *ngIf="rejected">
+        <div class="pop">
+          <span> <b (click)="rejectedClick()">X</b> </span>
+        </div>
+        <div class="circle">
+          <i class="icon-ok"></i>
+        </div>
+        <div class="info" (click)="viewAllClick()">
+          <span>Rejected Notifications</span>
+          <span> <b> 3 notifications </b> &nbsp;&nbsp; <a>Rejected today</a></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="menu" onclick="javascript: this.classList.toggle('active');">
+      <i class="line">
+        <ul class="nav">
+          <li (click)="homeClick()">Home</li>
+          <li (click)="viewAllClick()">View All</li>
+        </ul>
+      </i><i class="line"></i><i class="line"></i>
+    </div>
+  </div>
+  <div>
+    <div>
+      <h1><i> Sentinel </i></h1>
+    </div>
+    <div id="circle1">
+      <div id="inner-cirlce1">
+        <h2></h2>
+      </div>
+    </div>
+  </div>
+</div>
+

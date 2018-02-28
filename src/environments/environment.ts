@@ -4,5 +4,7 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  /*apiEndpoint: 'http://10.252.198.198:8383/fmt-admin'*/
+  apiEndpoint: 'http://localhost:8381/fmt-sentinel'
 };
