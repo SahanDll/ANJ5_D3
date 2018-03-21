@@ -10,7 +10,7 @@ import {CommonService} from '../common/Common.service';
 })
 
 export class HomeComponent implements OnInit {
-  private lastLogin: any;
+  public lastLogin: any;
   public showLoad: boolean;
   public pending: boolean;
   public approved: boolean;
@@ -28,16 +28,16 @@ export class HomeComponent implements OnInit {
     }, 3000);
   }
 
-  private pendingClick() {
+  public pendingClick() {
     this.pending = false;
   }
-  private approvedClick() {
+  public approvedClick() {
     this.approved = false;
   }
-  private rejectedClick() {
+  public rejectedClick() {
     this.rejected = false;
   }
-  private homeClick() {
+  public homeClick() {
     swal({
       backdrop: false,
       type: 'warning',
@@ -45,7 +45,7 @@ export class HomeComponent implements OnInit {
       text: '. . . . . . . . . . . .'
     });
   }
-  private viewAllClick() {
+  public viewAllClick() {
     this.commonService.navigateToViewAll();
   }
 }

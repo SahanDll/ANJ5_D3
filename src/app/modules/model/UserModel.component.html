@@ -17,12 +17,15 @@
   <div>
     <h1 mat-dialog-title style="margin-bottom: 5%; margin-top: 2%">User Relations</h1>
   </div>
+  <div style="color: #de3b12; float: right; right: 1%; top: 1%; position: absolute">
+    <button mat-button (click)="onBackClick()">Go Back</button>
+  </div>
   <div class='card' style="top: 2%;">
     <div *ngIf='_viewMode === "1"' style="color: #1c4963; position: relative;">
       <app-force-directed-chart-user [data]="chartData"></app-force-directed-chart-user>
     </div>
     <div *ngIf='_viewMode === "2"' style="left: 10%; width: 80%; position: relative; color: white">
-      <table class="table" style="border: dotted">
+      <table class="table" style="border: groove">
         <tr style="border: double">
           <th>#</th>&nbsp;&nbsp;&nbsp;&nbsp;
           <th>User Id</th>&nbsp;&nbsp;&nbsp;&nbsp;
@@ -45,8 +48,5 @@
     <div *ngIf='_viewMode === "3"' style="color: white; position: relative;">
       <pre> <div [innerHTML]="chartData | json"></div> </pre>
     </div>
-  </div>
-  <div style="color: #de3b12; float: right; right: 1%; bottom: 1%; top: 10%; position: relative">
-    <button mat-button (click)="onBackClick()">Go Back</button>
   </div>
 </div>

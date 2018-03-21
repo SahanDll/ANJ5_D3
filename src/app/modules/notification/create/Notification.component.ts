@@ -10,7 +10,7 @@ import {LoginService} from '../../login/Login.service';
 })
 
 export class NotificationComponent implements OnInit {
-  private _insertStock: string;
+  public _insertStock: string;
   constructor(private loginService: LoginService, private commonService: CommonService) {
   }
   ngOnInit(): void {
@@ -30,7 +30,7 @@ export class NotificationComponent implements OnInit {
       });
     }
   }
-  private keyDownFunction(event) {
+  public keyDownFunction(event) {
     if (event.keyCode === 13) {
       if (this._insertStock.length >= 3) {
         swal({
@@ -49,10 +49,10 @@ export class NotificationComponent implements OnInit {
       }
     }
   }
-  private homeClick() {
+  public homeClick() {
     this.commonService.navigateToHome();
   }
-  private viewAllClick() {
+  public viewAllClick() {
     swal({
       backdrop: false,
       type: 'warning',

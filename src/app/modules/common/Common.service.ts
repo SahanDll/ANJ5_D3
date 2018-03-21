@@ -4,6 +4,7 @@ import {Login} from '../login/Login';
 import {JSEncrypt} from 'jsencrypt';
 import {Router} from '@angular/router';
 import { environment } from '../../../environments/environment';
+import Base64 = require('crypto-js/enc-base64');
 
 interface PublicKeyResponse {
   key: string;
@@ -29,7 +30,8 @@ const user = {
 };
 
 const mainUrl = environment.apiEndpoint;
-const apiUrl = mainUrl + '/api/';
+const apiUrl = mainUrl + '/api';
+const loginUrl = apiUrl + '/user-login/';
 const authUrl = mainUrl + '/oauth/token';
 
 @Injectable()
@@ -48,7 +50,7 @@ export class CommonService {
     login.auth = false;
     login.role = 0;
     return this.http
-      .get<PublicKeyResponse>(apiUrl + 'getPublicKey')
+      .get<PublicKeyResponse>(loginUrl + 'getPublicKey')
       .toPromise()
       .then(pkResult => {
           this.user.userName = login.userName;
@@ -56,7 +58,7 @@ export class CommonService {
           crypto.setPublicKey(pkResult.key);
           this.user.encPassword = crypto.encrypt(login.password);
           return this.http
-            .post<LoginResponse>(apiUrl + 'authenticateUser', JSON.stringify(this.user), httpOptions)
+            .post<LoginResponse>(loginUrl + 'authenticateUser', JSON.stringify(this.user), httpOptions)
             .toPromise()
             .then(loginResult => {
               if (loginResult.auth) {
@@ -96,7 +98,10 @@ export class CommonService {
 
   screen(): Promise<any[]> {
     return this.http
-      .get<any>(apiUrl + 'view/read-all')
+      .get<any>(apiUrl + '/view/read-all', {
+        headers: new HttpHeaders().set('Authorization', this.getBearerAuth())
+          .set('Content-Type', 'application/json')
+      })
       .toPromise()
       .then(screenResult => {
 
@@ -110,7 +115,10 @@ export class CommonService {
 
   version(): Promise<any> {
     return this.http
-      .get<any>(apiUrl + 'downloaded/read-all')
+      .get<any>(apiUrl + '/downloaded/read-all', {
+        headers: new HttpHeaders().set('Authorization', this.getBearerAuth())
+          .set('Content-Type', 'application/json')
+      })
       .toPromise()
       .then(versionResult => {
           return versionResult;
@@ -123,7 +131,10 @@ export class CommonService {
 
   device(): Promise<any> {
     return this.http
-      .get<any>(apiUrl + 'using/read-all')
+      .get<any>(apiUrl + '/using/read-all', {
+        headers: new HttpHeaders().set('Authorization', this.getBearerAuth())
+          .set('Content-Type', 'application/json')
+      })
       .toPromise()
       .then(deviceResult => {
           return deviceResult;
@@ -136,7 +147,10 @@ export class CommonService {
 
   users(): Promise<any> {
     return this.http
-      .get<any>(apiUrl + 'user/read-all')
+      .get<any>(apiUrl + '/user/read-all', {
+        headers: new HttpHeaders().set('Authorization', this.getBearerAuth())
+          .set('Content-Type', 'application/json')
+      })
       .toPromise()
       .then(usersResult => {
           return usersResult;
@@ -149,7 +163,10 @@ export class CommonService {
 
   userDetails(userId): Promise<any> {
     return this.http
-      .get<any>(apiUrl + 'user/read-by-user?userId=' + userId)
+      .get<any>(apiUrl + '/user/read-by-user?userId=' + userId, {
+        headers: new HttpHeaders().set('Authorization', this.getBearerAuth())
+          .set('Content-Type', 'application/json')
+      })
       .toPromise()
       .then(usersResult => {
           return usersResult;
@@ -162,7 +179,10 @@ export class CommonService {
 
   location(): Promise<any> {
     return this.http
-      .get<any>(apiUrl + 'login/read-all')
+      .get<any>(apiUrl + '/login/read-all', {
+        headers: new HttpHeaders().set('Authorization', this.getBearerAuth())
+          .set('Content-Type', 'application/json')
+      })
       .toPromise()
       .then(locationResult => {
           return locationResult;
@@ -175,7 +195,10 @@ export class CommonService {
 
   screenEngage(): Promise<any> {
     return this.http
-      .get<any>(apiUrl + 'engage/read-all')
+      .get<any>(apiUrl + '/engage/read-all', {
+        headers: new HttpHeaders().set('Authorization', this.getBearerAuth())
+          .set('Content-Type', 'application/json')
+      })
       .toPromise()
       .then(engageResult => {
           return engageResult;
@@ -219,10 +242,15 @@ export class CommonService {
   }
 
   private getBasicAuth() {
-    const clientId = 'samJwtClientId';
+    const clientId = 'sentinelJwtClientId';
     const clientSecret = 'mySecret';
     return 'Basic ' + btoa(clientId + ':' + clientSecret);
   }
+
+  private getBearerAuth() {
+    return 'Bearer ' + this._authToken;
+  }
+
   navigateToHome() {
     this.router.navigate(['/', 'home'], {skipLocationChange: true});
   }

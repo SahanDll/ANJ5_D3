@@ -4,7 +4,32 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `ng serve --aot` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+## SIT build
+
+Run `ng build --env=sit --aot` for a SIT Build.
+
+## SIT server
+
+Run `ng serve --env=sit --aot` for a SIT server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+## UAT build
+
+Run `ng build --env=uat --aot` for a UAT Build.
+
+## UAT server
+
+Run `ng serve --env=uat --aot` for a UAT server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+## PROD build
+
+Run `ng build --env=prod --aot` for a PROD Build.
+
+## PROD server
+
+Run `ng serve --env=prod --aot` for a PROD server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
 
 ## Code scaffolding
 

@@ -7,8 +7,8 @@ import {CommonService} from '../common/Common.service';
 })
 
 export class UserModelComponent implements OnInit {
-  private _chartData: Array<any> = [];
-  private _viewMode: String = '1';
+  public _chartData: Array<any> = [];
+  public _viewMode: String = '1';
 
   constructor(private commonService: CommonService) {
     this.commonService.userDetails(this.commonService.clickedUserId).then((res) => {

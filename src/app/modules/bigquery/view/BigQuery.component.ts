@@ -4,16 +4,6 @@ import {CommonService} from '../../common/Common.service';
 import {LoginService} from '../../login/Login.service';
 import { ForceDirectedDataService } from '../../chart/ForceDirectChart.service';
 
-@Pipe({
-  name: 'prettyprint'
-})
-export class PrettyPrintPipe  implements PipeTransform {
-  transform(val) {
-    return JSON.stringify(val, null, 2)
-      .replace(/ /g, '&nbsp;')
-      .replace(/\n/g, '<br/>');
-  }
-}
 
 @Component({
   selector: 'app-bigquery',
@@ -46,7 +36,7 @@ export class BigQueryComponent implements OnInit {
     }
   }
 
-  private keyDownFunction(event) {
+  public keyDownFunction(event) {
     if (event.keyCode === 13) {
       if (this._userId.length >= 3) {
         swal({
@@ -65,35 +55,35 @@ export class BigQueryComponent implements OnInit {
       }
     }
   }
-  private homeClick() {
+  public homeClick() {
     this.commonService.navigateToHome();
   }
 
-  private screen() {
+  public screen() {
     this.commonService.screen().then((res) => {
       this._screenData = res;
     }  );
   }
 
-  private location() {
+  public location() {
     this.commonService.location().then((res) => {
       this._screenData = res;
     }  );
   }
 
-  private device() {
+  public device() {
     this.commonService.device().then((res) => {
       this._screenData = res;
     }  );
   }
 
-  private version() {
+  public version() {
     this.commonService.version().then((res) => {
       this._screenData = res;
     }  );
   }
 
-  private users() {
+  public users() {
 /*    this._chartData = this.forceDirectedDataService.createSensors(30);
     console.log(this._chartData)*/
 /*    setInterval(() => {
@@ -105,7 +95,7 @@ export class BigQueryComponent implements OnInit {
     }  );
   }
 
-  private viewAllClick() {
+  public viewAllClick() {
     swal({
       backdrop: false,
       type: 'warning',
@@ -131,7 +121,7 @@ export class BigQueryComponent implements OnInit {
     this._screenData = value;
   }
 
-  private getData(): String {
+  public getData(): String {
     return JSON.stringify(this._screenData, null, 2)
       .replace(/ /g, '&nbsp;')
       .replace(/\n/g, '<br/>')
